@@ -5,10 +5,11 @@ import CastingCard from './CastingCard';
 
 const CastingsGrid = () => {
     const {castings, getCastings} = useAppContext();
-     
+       
     useEffect(() => {
-    getCastings();
-  }, [getCastings]);
+      getCastings();
+    }, [getCastings]);
+
   return (
     <>
     <div className="flex justify-center items-center">

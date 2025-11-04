@@ -8,6 +8,8 @@ export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [castings, setCastings] = useState([]);
 
+
+
   const getCastings = useCallback(async () => {
     try {
       setLoading(true);
@@ -21,6 +23,7 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
+
 
   return (
     <AppContext.Provider
