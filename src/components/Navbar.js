@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link href="/ourProducts">Iniciar Sesion</Link>
         </li>
         <li className="px-4 py-2 md:p-0">
-          <Link href="">Registrarse</Link>
+          <Link href="/register">Registrarse</Link>
         </li>
       </ul>
     </nav>

@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useContext, useCallback, useState, createContext } from "react";
+import { useContext, useCallback, useState, createContext, useEffect } from "react";
 
 const AppContext = createContext();
 
@@ -23,13 +23,25 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
+  const createModel = useCallback(async (model) => {
+    try {
+      const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/models/`, model);
+      console.log('se creo el modelo', response.data)
+      
+    } catch (error) {
+      console.log(error, 'error')
+    }
+  })
 
+useEffect(() => {
+      getCastings();
+    }, [getCastings]);
 
   return (
     <AppContext.Provider
       value={{
         castings,
-        getCastings,
+        createModel,
         loading
       }}
     >
