@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-// Si usas Heroicons, importa estos. Si no, puedes mantener tus SVGs o buscar alternativas.
-// import { MapPinIcon, CurrencyDollarIcon, BuildingOfficeIcon, CalendarDaysIcon } from '@heroicons/react/24/solid';
 
 const CastingCard = ({ casting }) => {
   // Función para formatear el número de pago

@@ -20,7 +20,7 @@ const RegisterPage = () => {
         <div>
           <Image
             className="mx-auto h-12 w-auto"
-            src="/assets/logoCompany.png" // Tu logo
+            src="/assets/logo.png" // Tu logo
             alt="CastingFlow Logo"
             width={48}
             height={48}

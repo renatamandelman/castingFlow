@@ -39,16 +39,14 @@ const RegisterModel = () => {
           </p>
         </div>
 
-        {/* Formulario */}
         <form className="mt-8 space-y-10" onSubmit={(e) => handleAddModel(e)}>
           
-          {/* --- SECCIÓN 1: INFORMACIÓN DE CUENTA --- */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">
               Datos de tu Cuenta
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Email */}
+             
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Email
@@ -62,9 +60,9 @@ const RegisterModel = () => {
                   placeholder="tu@email.com"
                 />
               </div>
-              <div></div> {/* Espacio vacío para alinear la grilla */}
+              <div></div>
 
-              {/* Password */}
+          
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                   Contraseña
@@ -79,7 +77,7 @@ const RegisterModel = () => {
                 />
               </div>
 
-              {/* Confirmar Password */}
+            
               <div>
                 <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
                   Confirmar Contraseña

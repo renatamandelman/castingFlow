@@ -32,6 +32,15 @@ export const AppContextProvider = ({ children }) => {
       console.log(error, 'error')
     }
   })
+   const createRecruiter = useCallback(async (recruiter) => {
+    try {
+      const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/recruiters/`, recruiter);
+      console.log('se creo el recruiter', response.data)
+      
+    } catch (error) {
+      console.log(error, 'error')
+    }
+  })
 
 useEffect(() => {
       getCastings();
@@ -42,6 +51,7 @@ useEffect(() => {
       value={{
         castings,
         createModel,
+        createRecruiter,
         loading
       }}
     >
