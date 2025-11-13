@@ -234,7 +234,7 @@ const RegisterRecruiter = () => {
             <button
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#CD2C58] hover:bg-[#B0264A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B0264A] disabled:opacity-50 disabled:cursor-not-allowed"
-              
+              to='/model'
             >
               Crear Cuenta
             </button>

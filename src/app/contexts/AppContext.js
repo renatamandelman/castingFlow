@@ -7,6 +7,7 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [castings, setCastings] = useState([]);
+  const [model, setModel] = useState(null);
 
 
 
@@ -18,6 +19,19 @@ export const AppContextProvider = ({ children }) => {
       );
       setCastings(response.data.castings);
       console.log(response.data.castings);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+    const getModel = useCallback(async (id) => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/models/${id}`
+      );
+      setModel(response.data.model);
+      console.log(response.data.model);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -44,12 +58,14 @@ export const AppContextProvider = ({ children }) => {
 
 useEffect(() => {
       getCastings();
+      getModel();
     }, [getCastings]);
 
   return (
     <AppContext.Provider
       value={{
         castings,
+        model,
         createModel,
         createRecruiter,
         loading

@@ -5,8 +5,6 @@ import CastingCard from './CastingCard';
 
 const CastingsGrid = () => {
     const {castings} = useAppContext();
-       
-    
 
   return (
     <>
