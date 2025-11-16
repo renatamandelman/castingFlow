@@ -24,14 +24,14 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
-    const getModel = useCallback(async (id) => {
+    const getModel = useCallback(async ({id}) => {
     try {
       setLoading(true);
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/models/${id}`
       );
       setModel(response.data.model);
-      console.log(response.data.model);
+      console.log('obtuviste el model', response.data.model);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -41,6 +41,7 @@ export const AppContextProvider = ({ children }) => {
     try {
       const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/models/`, model);
       console.log('se creo el modelo', response.data)
+      return response.data;
       
     } catch (error) {
       console.log(error, 'error')
@@ -58,7 +59,7 @@ export const AppContextProvider = ({ children }) => {
 
 useEffect(() => {
       getCastings();
-      getModel();
+      
     }, [getCastings]);
 
   return (
@@ -66,6 +67,7 @@ useEffect(() => {
       value={{
         castings,
         model,
+        getModel,
         createModel,
         createRecruiter,
         loading

@@ -33,16 +33,20 @@ const NavbarModel = () => {
       >
 
         <li className="relative flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
-         Ver Castings
+          <Link href="/model">Castings</Link>
+        </li>
+         <li className="relative flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
+         <Link href="/model/postulaciones">Mis postulaciones</Link>
         </li>
 
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center justify-center">
         <Image
-          src={'/assets/logo.png'}
+          src={model?.profileImageUrl || "/assets/logo.png"}
           width={100}
           height={100}
           alt="logo"
         />
+       
       </Link>
        
       </ul>

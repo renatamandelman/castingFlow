@@ -2,20 +2,28 @@
 import { useAppContext } from '@/app/contexts/AppContext'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+ import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'
 
 const RegisterModel = () => {
+  const router = useRouter();
   const {createModel, getModel} = useAppContext();
+const handleAddModel = async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const values = Object.fromEntries(formData.entries());
 
-  const handleAddModel = (e) => {
+  const newModel = await createModel(values); 
 
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const values = Object.fromEntries(formData.entries());
-    createModel(values);
-    getModel({id: values._id});
-    
-  };
+  if (newModel?._id) {
+    await getModel({ id: newModel._id });  
+  }
+
+  router.push('/model');
+};
+
+
   return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
@@ -271,7 +279,7 @@ const RegisterModel = () => {
             <button
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#CD2C58] hover:bg-[#B0264A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B0264A]"
-              to="/model"
+              
 
             >
               Crear mi cuenta

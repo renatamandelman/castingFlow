@@ -1,11 +1,13 @@
 'use client';
 
 import { useAppContext } from '@/app/contexts/AppContext';
+ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const RegisterRecruiter = () => {
+  const router = useRouter();
   const { createRecruiter } = useAppContext();
   
 
@@ -29,6 +31,7 @@ const RegisterRecruiter = () => {
     };
 
    createRecruiter(dataToSend);
+   router.push('/recruiter/home');
 
 
   };
