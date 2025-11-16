@@ -2,7 +2,7 @@ import NavbarModel from '@/components/NavbarModel'
 import PostulacionesContainer from '@/components/PostulacionesContainer'
 import React from 'react'
 
-const paje = () => {
+const page = () => {
   return (
     <>
   <NavbarModel/>
@@ -11,4 +11,4 @@ const paje = () => {
   )
 }
 
-export default paje
+export default page

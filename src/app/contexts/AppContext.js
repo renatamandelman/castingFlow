@@ -7,6 +7,7 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [castings, setCastings] = useState([]);
+  const [modelApplications, setModelApplications] = useState([]);
   const [model, setModel] = useState(null);
 
 
@@ -24,7 +25,7 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
-    const getModel = useCallback(async ({id}) => {
+    const getModel = useCallback(async (id) => {
     try {
       setLoading(true);
       const response = await axios.get(
@@ -41,7 +42,7 @@ export const AppContextProvider = ({ children }) => {
     try {
       const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/models/`, model);
       console.log('se creo el modelo', response.data)
-      return response.data;
+      return response.data.model._id
       
     } catch (error) {
       console.log(error, 'error')
@@ -56,11 +57,27 @@ export const AppContextProvider = ({ children }) => {
       console.log(error, 'error')
     }
   })
+  const getModelApplication = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/applications/model/${model?._id}`
+      );
+      setLoading(false);
+      setModelApplications(response.data.applications);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
 useEffect(() => {
       getCastings();
-      
-    }, [getCastings]);
+      const modelId = localStorage.getItem("modelId");
+      if (modelId) {
+        getModel(modelId);
+      }
+      getModelApplication(modelId);
+    }, [getCastings, getModel, getModelApplication]);
 
   return (
     <AppContext.Provider
@@ -70,6 +87,7 @@ useEffect(() => {
         getModel,
         createModel,
         createRecruiter,
+        modelApplications,
         loading
       }}
     >

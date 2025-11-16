@@ -1,38 +1,36 @@
-'use client'
-import { useAppContext } from '@/app/contexts/AppContext'
-import Image from 'next/image'
-import Link from 'next/link'
- import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react'
+"use client";
+import { useAppContext } from "@/app/contexts/AppContext";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const RegisterModel = () => {
   const router = useRouter();
-  const {createModel, getModel} = useAppContext();
-const handleAddModel = async (e) => {
-  e.preventDefault();
-  
-  const formData = new FormData(e.target);
-  const values = Object.fromEntries(formData.entries());
+  const { createModel, getModel } = useAppContext();
+  const handleAddModel = async (e) => {
+    e.preventDefault();
 
-  const newModel = await createModel(values); 
+    const formData = new FormData(e.target);
+    const values = Object.fromEntries(formData.entries());
 
-  if (newModel?._id) {
-    await getModel({ id: newModel._id });  
+    const newModel = await createModel(values);
+   if (!newModel) {
+    console.log("No se encontró el ID del modelo");
+    return;
   }
 
-  router.push('/model');
-};
-
+  await getModel(newModel );
+  router.push("/model");
+  };
 
   return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
-        
-
         <div>
           <Image
             className="mx-auto h-12 w-auto"
-            src="/assets/logoCompany.png" 
+            src="/assets/logoCompany.png"
             alt="CastingFlow Logo"
             width={48}
             height={48}
@@ -41,23 +39,27 @@ const handleAddModel = async (e) => {
             Crea tu cuenta de Modelo
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            ¿Ya tienes una cuenta?{' '}
-            <Link href="/login" className="font-medium text-[#CD2C58] hover:text-[#B0264A]">
+            ¿Ya tienes una cuenta?{" "}
+            <Link
+              href="/login"
+              className="font-medium text-[#CD2C58] hover:text-[#B0264A]"
+            >
               Inicia sesión aquí
             </Link>
           </p>
         </div>
 
         <form className="mt-8 space-y-10" onSubmit={(e) => handleAddModel(e)}>
-          
           <div className="space-y-6">
             <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">
               Datos de tu Cuenta
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Email
                 </label>
                 <input
@@ -71,9 +73,11 @@ const handleAddModel = async (e) => {
               </div>
               <div></div>
 
-          
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Contraseña
                 </label>
                 <input
@@ -86,9 +90,11 @@ const handleAddModel = async (e) => {
                 />
               </div>
 
-            
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Confirmar Contraseña
                 </label>
                 <input
@@ -109,7 +115,10 @@ const handleAddModel = async (e) => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Nombre
                 </label>
                 <input
@@ -123,7 +132,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Apellido
                 </label>
                 <input
@@ -137,7 +149,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="dob"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Fecha de Nacimiento
                 </label>
                 <input
@@ -150,7 +165,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="gender"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Género
                 </label>
                 <select
@@ -159,7 +177,9 @@ const handleAddModel = async (e) => {
                   required
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#CD2C58] focus:border-[#CD2C58] sm:text-sm"
                 >
-                  <option value="" disabled>Selecciona una opción...</option>
+                  <option value="" disabled>
+                    Selecciona una opción...
+                  </option>
                   <option value="female">Femenino</option>
                   <option value="male">Masculino</option>
                   <option value="other">Otro</option>
@@ -168,7 +188,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   País
                 </label>
                 <input
@@ -181,7 +204,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Ciudad
                 </label>
                 <input
@@ -201,20 +227,26 @@ const handleAddModel = async (e) => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="profileImageUrl" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="profileImageUrl"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   URL de tu Foto de Perfil
                 </label>
                 <input
                   id="profileImageUrl"
                   name="profileImageUrl"
-                  type="url"
+                  type="text"
                   className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#CD2C58] focus:border-[#CD2C58] sm:text-sm"
                   placeholder="https://ejemplo.com/tu-foto.jpg"
                 />
               </div>
 
               <div>
-                <label htmlFor="portfolioLink" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="portfolioLink"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Link a tu Portafolio
                 </label>
                 <input
@@ -234,7 +266,10 @@ const handleAddModel = async (e) => {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               <div>
-                <label htmlFor="height" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="height"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Altura (cm)
                 </label>
                 <input
@@ -247,7 +282,10 @@ const handleAddModel = async (e) => {
               </div>
 
               <div>
-                <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="weight"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Peso (kg)
                 </label>
                 <input
@@ -258,9 +296,12 @@ const handleAddModel = async (e) => {
                   placeholder="Ej: 60"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="shoeSize" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="shoeSize"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Calzado (AR)
                 </label>
                 <input
@@ -274,13 +315,10 @@ const handleAddModel = async (e) => {
             </div>
           </div>
 
-
           <div>
             <button
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#CD2C58] hover:bg-[#B0264A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B0264A]"
-              
-
             >
               Crear mi cuenta
             </button>
@@ -288,7 +326,7 @@ const handleAddModel = async (e) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RegisterModel;

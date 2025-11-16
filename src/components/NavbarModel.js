@@ -41,9 +41,10 @@ const NavbarModel = () => {
 
         <Link href="/" className="flex items-center justify-center">
         <Image
-          src={model?.profileImageUrl || "/assets/logo.png"}
-          width={100}
-          height={100}
+        className="rounded-2xl"
+          src={`/assets/${model?.profileImageUrl}` || "/assets/Haleyjames.webp"}
+          width={50}
+          height={50}
           alt="logo"
         />
        
