@@ -57,18 +57,18 @@ export const AppContextProvider = ({ children }) => {
       console.log(error, 'error')
     }
   })
-  const getModelApplication = useCallback(async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/applications/model/${model?._id}`
-      );
-      setLoading(false);
-      setModelApplications(response.data.applications);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const getModelApplication = useCallback(async (id) => {
+  try {
+    setLoading(true);
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/applications/model/${id}`
+    );
+    setModelApplications(response.data.applications);
+    setLoading(false);
+  } catch (error) {
+    console.log(error);
+  }
+}, []);
 
 useEffect(() => {
       getCastings();
@@ -76,7 +76,7 @@ useEffect(() => {
       if (modelId) {
         getModel(modelId);
       }
-      getModelApplication(modelId);
+      getModelApplication(model?._id);
     }, [getCastings, getModel, getModelApplication]);
 
   return (

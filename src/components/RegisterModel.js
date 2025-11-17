@@ -19,7 +19,7 @@ const RegisterModel = () => {
     console.log("No se encontró el ID del modelo");
     return;
   }
-
+  
   await getModel(newModel );
   router.push("/model");
   };

@@ -47,7 +47,7 @@ const CastingCard = ({ casting }) => {
 
       <div className='grow'> 
         <div className="flex justify-between items-start mb-2">
-            <h2 className='font-extrabold text-[#CD2C58] text-2xl leading-tight pr-4'>
+            <h2 className='font-extrabold text-[#CD2C58] text-xl leading-tight pr-4'>
             {casting.title}
             </h2>
             <span 
