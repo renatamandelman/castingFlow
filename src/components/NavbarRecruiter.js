@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppContext } from '@/app/contexts/AppContext'
 
-const NavbarModel = () => {
+const NavbarRecruiter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
- const { model } = useAppContext();
+ const { recruiter } = useAppContext();
   return (
     <nav
       className={`w-full h-[70px]  px-4 flex items-center justify-between z-50`}
@@ -33,23 +33,23 @@ const NavbarModel = () => {
       >
 
         <li className=" flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
-          <Link href="/model">Castings</Link>
+          <Link href="/recruiter">Modelos</Link>
         </li>
          <li className=" flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
-         <Link href="/model/postulaciones">Mis postulaciones</Link>
+         <Link href="/recruiter/postulaciones">Mis castings</Link>
         </li>
           <li className="flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
     <Link href="/" >
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
     src={
-      model?.profileImageUrl
-        ? `/assets/${model.profileImageUrl}`
+      recruiter?.companyLogoUrl
+        ? `/assets/${recruiter.companyLogoUrl}`
         : "/assets/Haleyjames.webp"
     }
     width={40}
     height={40}
-    alt="Foto de Perfil del Modelo"
+    alt="Foto de Perfil del Recruiter"
   />
 </Link>
        
@@ -59,4 +59,4 @@ const NavbarModel = () => {
   );
 };
 
-export default NavbarModel;
+export default NavbarRecruiter;

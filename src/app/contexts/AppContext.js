@@ -9,9 +9,23 @@ export const AppContextProvider = ({ children }) => {
   const [castings, setCastings] = useState([]);
   const [modelApplications, setModelApplications] = useState([]);
   const [model, setModel] = useState(null);
+  const [recruiter, setRecruiter] = useState(null);
+  const [models, setModels] = useState([]);
 
 
-
+ const getModels = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/models`
+      );
+      setModels(response.data.models);
+      console.log(response.data.models);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   const getCastings = useCallback(async () => {
     try {
       setLoading(true);
@@ -38,6 +52,21 @@ export const AppContextProvider = ({ children }) => {
       console.log(error);
     }
   }, []);
+  
+      const getRecruiter = useCallback(async (id) => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/recruiters/${id}`
+      );
+      setRecruiter(response.data.recruiter);
+      console.log('obtuviste el model', response.data.recruiter);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   const createModel = useCallback(async (model) => {
     try {
       const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/models/`, model);
@@ -71,6 +100,7 @@ export const AppContextProvider = ({ children }) => {
 }, []);
 
 useEffect(() => {
+      getModels();
       getCastings();
       const modelId = localStorage.getItem("modelId");
       if (modelId) {
@@ -84,10 +114,14 @@ useEffect(() => {
       value={{
         castings,
         model,
+        models,
         getModel,
+        recruiter,
+        getRecruiter,
         createModel,
         createRecruiter,
         modelApplications,
+        getModelApplication,
         loading
       }}
     >

@@ -3,7 +3,7 @@ import { useAppContext } from '@/app/contexts/AppContext';
 import React from 'react'
 
 const PostulacionesContainer = () => {
-   const { modelApplications } = useAppContext();
+   const { model, getModelApplications, modelApplications } = useAppContext();
   return (
     <>
 

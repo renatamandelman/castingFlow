@@ -8,30 +8,18 @@ import React from 'react';
 
 const RegisterRecruiter = () => {
   const router = useRouter();
-  const { createRecruiter } = useAppContext();
+  const { createRecruiter, getRecruiter } = useAppContext();
   
 
-  const handleAddRecruiter =  (event) => {
+  const handleAddRecruiter =  async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const values = Object.fromEntries(formData.entries());
 
-    const dataToSend = {
-      companyName: values.companyName,
-      email: values.email,
-      password: values.password,
-      // No enviar confirmPassword al backend
-      phone: values.phone || null, // Campos opcionales
-      address: values.address || null,
-      city: values.city || null,
-      country: values.country || null,
-      companyWebsite: values.companyWebsite || null,
-      companyLogoUrl: values.companyLogoUrl || null,
-      description: values.description || null,
-    };
-
-   createRecruiter(dataToSend);
-   router.push('/recruiter/home');
+   const newRecruiter = await createRecruiter(values);
+  await getRecruiter(newRecruiter );
+  router.push("/recruiter");
+ 
 
 
   };
