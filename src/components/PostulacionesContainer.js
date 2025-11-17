@@ -4,6 +4,8 @@ import React from 'react'
 
 const PostulacionesContainer = () => {
    const { model, getModelApplications, modelApplications } = useAppContext();
+
+   
   return (
     <>
 

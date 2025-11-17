@@ -20,7 +20,7 @@ const RegisterModel = () => {
     return;
   }
   
-  await getModel(newModel );
+  await getModel(newModel);
   router.push("/model");
   };
 

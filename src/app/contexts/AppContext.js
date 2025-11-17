@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useContext, useCallback, useState, createContext, useEffect } from "react";
-
+import { useRouter } from "next/navigation";
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
@@ -11,6 +11,7 @@ export const AppContextProvider = ({ children }) => {
   const [model, setModel] = useState(null);
   const [recruiter, setRecruiter] = useState(null);
   const [models, setModels] = useState([]);
+  const router = useRouter();
 
 
  const getModels = useCallback(async () => {
@@ -98,6 +99,35 @@ export const AppContextProvider = ({ children }) => {
     console.log(error);
   }
 }, []);
+const login = useCallback(async (email, password) => {
+  
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      { email, password }
+    );
+
+    const {user, role } = response.data;
+
+
+    if (role === "model") {
+      localStorage.setItem("modelId", user._id);
+      setModel(user);
+      router.push("/model");
+    } else {
+      localStorage.setItem("recruiterId", user._id);
+      setRecruiter(user);
+      router.push("/recruiter");
+    }
+    console.log("Login exitoso:", response.data);
+    return true;
+
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}, []);
+
 
 useEffect(() => {
       getModels();
@@ -106,15 +136,20 @@ useEffect(() => {
       if (modelId) {
         getModel(modelId);
       }
-      getModelApplication(model?._id);
-    }, [getCastings, getModel, getModelApplication]);
+    }, [getCastings, getModel]);
 
+    useEffect(() => {
+  if (model?._id) {
+    getModelApplication(model._id);
+  }
+}, [model, getModelApplication]);
   return (
     <AppContext.Provider
       value={{
         castings,
         model,
         models,
+        login,
         getModel,
         recruiter,
         getRecruiter,

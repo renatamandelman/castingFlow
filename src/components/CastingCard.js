@@ -80,6 +80,9 @@ const CastingCard = ({ casting }) => {
             <svg className="w-4 h-4 mr-2 fill-[#CD2C58]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192zm-128 80c0-6.7 2.8-13 7.7-17.3l.7-.7c5-4.4 11.2-6.7 17.4-6.7c7 0 13.5 2.5 18.4 7.4L424.4 336c5 4.9 7.6 11.5 7.6 18.5s-2.6 13.6-7.6 18.5L384 416l-32-32-24.4 24.4c-4.9 5-11.5 7.6-18.5 7.6s-13.6-2.6-18.5-7.6L256 384l-32 32-24.4-24.4c-4.9-5-7.6-11.5-7.6-18.5s2.6-13.6 7.6-18.5L320 272z"/></svg>
             <span>{formatDate(casting.jobDate)}</span>
           </p>
+          <Link href={`/castings/${casting._id}`} className="text-md ml-4 p-2 rounded text-white bg-[#CD2C58] font-semibold hover:underline">
+            +
+          </Link>
         </div>
       </div>
     </Link>

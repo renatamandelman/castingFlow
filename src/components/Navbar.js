@@ -36,7 +36,7 @@ const Navbar = () => {
         </li>
 
         <li className="px-4 py-2 md:p-0">
-          <Link href="/ourProducts">Iniciar Sesión</Link>
+          <Link href="/login">Iniciar Sesión</Link>
         </li>
         <li className="px-4 py-2 md:p-0">
           <Link href="/register">Registrarse</Link>
