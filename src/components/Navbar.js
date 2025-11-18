@@ -41,6 +41,9 @@ const Navbar = () => {
         <li className="px-4 py-2 md:p-0">
           <Link href="/register">Registrarse</Link>
         </li>
+         <li className="px-4 py-2 md:p-0">
+          <Link href="/about">About</Link>
+        </li>
       </ul>
     </nav>
   );
