@@ -23,17 +23,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center  py-5 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         
         <div>
-          <Image
-            className="mx-auto h-12 w-auto"
-            src="/assets/logo.png" 
-            width={48}
-            height={48}
-          />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+      
+          <h2 className=" text-center text-3xl font-extrabold text-gray-900">
             Iniciar Sesión
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -44,9 +39,9 @@ const LoginPage = () => {
           </p>
         </div>
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-5 space-y-6" onSubmit={handleSubmit}>
     
-          <div className="rounded-md shadow-sm space-y-4">
+          <div className="rounded-md space-y-4">
             
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">

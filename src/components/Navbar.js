@@ -15,8 +15,8 @@ const Navbar = () => {
       <Link href="/" className="flex items-center">
         <Image
           src={'/assets/logo.png'}
-          width={100}
-          height={100}
+          width={150}
+          height={150}
           alt="logo"
         />
       </Link>
@@ -24,7 +24,7 @@ const Navbar = () => {
   
       <ul
         className={`
-          md:flex md:flex-row md:w-[30%] md:justify-between md:font-bold md:mr-4 md:pr-2
+          md:flex md:flex-row md:w-[25%] md:justify-between md:font-bold md:mr-4 md:pr-2
            md:static top-[70px] left-0 w-full bg-white md:bg-transparent text-black md:text-current font-semibold
           flex-col items-start md:items-center transition-all duration-300
           ${isOpen ? "opacity-100 visible" : "opacity-0 invisible md:visible md:opacity-100"}
@@ -32,15 +32,14 @@ const Navbar = () => {
       >
 
         <li className=" flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
-         Castings
-        </li>
+  <Link href="/">Castings</Link>        </li>
 
         <li className="px-4 py-2 md:p-0">
           <Link href="/login">Iniciar Sesión</Link>
         </li>
-        <li className="px-4 py-2 md:p-0">
+        {/* <li className="px-4 py-2 md:p-0">
           <Link href="/register">Registrarse</Link>
-        </li>
+        </li> */}
          <li className="px-4 py-2 md:p-0">
           <Link href="/about">About</Link>
         </li>

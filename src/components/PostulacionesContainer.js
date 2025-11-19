@@ -1,6 +1,7 @@
 'use client'
 import { useAppContext } from '@/app/contexts/AppContext';
 import React from 'react'
+import PostulacionCard from './PostulacionCard';
 
 const PostulacionesContainer = () => {
    const { model, getModelApplications, modelApplications } = useAppContext();
@@ -10,17 +11,13 @@ const PostulacionesContainer = () => {
     <>
 
     <div>
-      <h1 className="text-3xl font-bold text-center my-8">Mis Postulaciones</h1>
-      <div className="max-w-4xl mx-auto px-4">
+      <h1 className="text-2xl font-bold text-center my-2 text-[#CD2C58]">Mis Postulaciones</h1>
+      <div className=" px-4 flex flex-col mt-5 justify-center items-center">
         {modelApplications.length === 0 ? (
           <p className="text-center text-gray-600">No tienes postulaciones aún.</p>
         ) :
           modelApplications.map((application) => (
-            <div key={application._id} className="bg-white shadow-md rounded-lg p-6 mb-6">
-              <h2 className="text-2xl font-semibold mb-2">{application.castingTitle}</h2>
-              <p className="text-gray-700 mb-4">{application.castingDescription}</p>
-              <p className="text-gray-600"><span className="font-semibold">Estado:</span> {application.status}</p>
-            </div>
+           <PostulacionCard key={application._id} application={application} />
           ))
         }
       </div>

@@ -11,8 +11,6 @@ const ModelCard = ({ model }) => {
     });
   };
 
-  // Usa imagen local si viene un archivo (ej: "lucia.png")
-  //   const profileSrc = `/assets/${model.profileImageUrl || "default-profile.png"}`;
 
   return (
    <Link
@@ -21,17 +19,14 @@ const ModelCard = ({ model }) => {
              rounded-xl shadow-lg  hover:shadow-md hover:shadow-[#E06B80] transition-all duration-300 border border-gray-100"
 >
   {/* Imagen */}
-  <div className="w-full flex justify-center mb-4">
+  <div className="w-full flex justify-center  mb-4">
     <Image
-       src={
-    model?.profileImageUrl?.startsWith("http")
-      ?  `/assets/${model.profileImageUrl}` : "/assets/Haleyjames.webp"
-  }
-      width={120}
-      height={140}
-      alt="Foto de Perfil del Modelo"
-      className="rounded-xl "
-    />
+    src={ `/assets/models/${model?.profileImageUrl}` }
+    width={120}
+    height={120}
+    alt="Foto de Perfil del Modelo"
+    className="rounded-xl" 
+  />
   </div>
 
   {/* Info */}

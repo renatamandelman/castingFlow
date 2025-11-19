@@ -87,6 +87,16 @@ export const AppContextProvider = ({ children }) => {
       console.log(error, 'error')
     }
   })
+  const createApplication = useCallback(async (application) => {
+    try {
+      const response = await axios.post( `${process.env.NEXT_PUBLIC_API_URL}/applications/`, application);
+      console.log('se creo la aplicacion', response.data)
+      
+    } catch (error) {
+      console.log(error, 'error')
+    }
+  });
+
   const getModelApplication = useCallback(async (id) => {
   try {
     setLoading(true);
@@ -98,7 +108,7 @@ export const AppContextProvider = ({ children }) => {
   } catch (error) {
     console.log(error);
   }
-}, []);
+});
 const login = useCallback(async (email, password) => {
   
   try {
@@ -142,7 +152,7 @@ useEffect(() => {
   if (model?._id) {
     getModelApplication(model._id);
   }
-}, [model, getModelApplication]);
+}, [getModelApplication, model]);
   return (
     <AppContext.Provider
       value={{
@@ -155,6 +165,7 @@ useEffect(() => {
         getRecruiter,
         createModel,
         createRecruiter,
+        createApplication,
         modelApplications,
         getModelApplication,
         loading

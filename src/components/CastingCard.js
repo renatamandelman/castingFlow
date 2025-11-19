@@ -1,10 +1,30 @@
+import { useAppContext } from '@/app/contexts/AppContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 
 const CastingCard = ({ casting }) => {
-  // Función para formatear el número de pago
+   const { createApplication, model } = useAppContext();
+  const [isApplied, setIsApplied] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
+  const handleSubmitMessage = async () => {
+    if (!message.trim()) return;
+
+    const created = await createApplication({
+      casting: casting._id,
+      model: model._id,
+      message,
+    });
+
+    setIsApplied(true);
+closeModal();
+  };
   const formatPayRate = (rate) => {
     return new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -31,17 +51,18 @@ const CastingCard = ({ casting }) => {
   };
 
   return (
-    <Link 
-      href={`/castings/${casting._id}`} 
+    <>
+    <div 
       className='bg-white p-6 m-3 flex flex-col md:flex-row items-start w-[80%] max-w-4xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'
     >
       <div className='shrink-0 mr-6 mb-4 md:mb-0'>
         <Image
-          src={ '/assets/logoCompany.png'}
+          src={ `/assets/recruiters/${casting.recruiter?.companyLogoUrl}`}
           alt={`${casting.recruiter?.companyName || casting.title} logo`}
-          className="rounded-full object-cover border-2 border-gray-200"
+          className="rounded-full object-contain border-2 border-gray-200"
           width={64}
           height={64}
+          style={{ height: "64px" }}
         />
       </div>
 
@@ -67,7 +88,8 @@ const CastingCard = ({ casting }) => {
           {casting.description}
         </p>
 
-        <div className='flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-600 text-sm'>
+        <div className='flex justify-between text-gray-600 text-sm'>
+         <div className='flex items-center gap-x-6 gap-y-2'>
           <p className='flex items-center'>
 
             <svg className="w-4 h-4 mr-2 fill-[#CD2C58]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"/></svg> 
@@ -80,13 +102,56 @@ const CastingCard = ({ casting }) => {
             <svg className="w-4 h-4 mr-2 fill-[#CD2C58]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192zm-128 80c0-6.7 2.8-13 7.7-17.3l.7-.7c5-4.4 11.2-6.7 17.4-6.7c7 0 13.5 2.5 18.4 7.4L424.4 336c5 4.9 7.6 11.5 7.6 18.5s-2.6 13.6-7.6 18.5L384 416l-32-32-24.4 24.4c-4.9 5-11.5 7.6-18.5 7.6s-13.6-2.6-18.5-7.6L256 384l-32 32-24.4-24.4c-4.9-5-7.6-11.5-7.6-18.5s2.6-13.6 7.6-18.5L320 272z"/></svg>
             <span>{formatDate(casting.jobDate)}</span>
           </p>
-          <Link href={`/castings/${casting._id}`} className="text-md ml-4 p-2 rounded text-white bg-[#CD2C58] font-semibold hover:underline">
-            +
-          </Link>
+          </div>
+          <div>
+        <button 
+              onClick={openModal}
+              disabled={isApplied}
+              className={`text-md ml-2 p-2 rounded text-white font-semibold 
+                ${isApplied ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#CD2C58] hover:underline'}`}
+            >
+              {isApplied ? "Postulado" : "Postularme"}
+            </button>
+          </div>
         </div>
       </div>
-    </Link>
-  )
-}
+    </div>
+    {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-xl w-[90%] max-w-md shadow-lg">
+
+            <h2 className="text-xl font-bold text-[#CD2C58] mb-4">Mensaje de postulación</h2>
+
+            <textarea
+              className="w-full border border-gray-300 rounded-lg p-3 h-28 outline-none focus:ring-2 focus:ring-[#CD2C58]"
+              placeholder="Escribí un mensaje para el reclutador..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+
+            <div className="flex justify-end gap-3 mt-4">
+              <button 
+                onClick={closeModal}
+                className="px-4 py-2 rounded-lg border border-gray-400 text-gray-700"
+              >
+                Cancelar
+              </button>
+
+              <button 
+                onClick={handleSubmitMessage}
+                className="px-4 py-2 rounded-lg bg-[#CD2C58] text-white font-semibold"
+              >
+                Enviar postulación
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </>
+  );
+};
+
+ 
 
 export default CastingCard;

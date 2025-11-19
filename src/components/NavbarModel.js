@@ -16,8 +16,8 @@ const NavbarModel = () => {
       <Link href="/" className="flex items-center">
         <Image
           src={'/assets/logo.png'}
-          width={100}
-          height={100}
+          width={150}
+          height={150}
           alt="logo"
         />
       </Link>
@@ -42,14 +42,11 @@ const NavbarModel = () => {
     <Link href="/" >
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
-    src={
-      model?.profileImageUrl
-        ? `/assets/${model.profileImageUrl}`
-        : "/assets/Haleyjames.webp"
-    }
-    width={40}
-    height={40}
+    src={ `/assets/models/${model?.profileImageUrl}` }
+    width={50}
+    height={50}
     alt="Foto de Perfil del Modelo"
+    style={{ height: "50px" }}
   />
 </Link>
        

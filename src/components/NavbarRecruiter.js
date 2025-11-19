@@ -10,14 +10,14 @@ const NavbarRecruiter = () => {
  const { recruiter } = useAppContext();
   return (
     <nav
-      className={`w-full h-[70px]  px-4 flex items-center justify-between z-50`}
+      className={`w-full h-[70px]  px-4 mt-1 flex items-center justify-between z-50`}
     >
 
       <Link href="/" className="flex items-center">
         <Image
           src={'/assets/logo.png'}
-          width={100}
-          height={100}
+          width={150}
+          height={150}
           alt="logo"
         />
       </Link>
@@ -42,13 +42,9 @@ const NavbarRecruiter = () => {
     <Link href="/" >
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
-    src={
-      recruiter?.companyLogoUrl
-        ? `/assets/${recruiter.companyLogoUrl}`
-        : "/assets/Haleyjames.webp"
-    }
-    width={40}
-    height={40}
+    src={`/assets/recruiters/${recruiter.companyLogoUrl}`}
+    width={50}
+    height={50}
     alt="Foto de Perfil del Recruiter"
   />
 </Link>

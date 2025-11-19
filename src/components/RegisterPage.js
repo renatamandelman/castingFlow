@@ -14,18 +14,11 @@ const RecruiterIcon = () => (
 
 const RegisterPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8">
         {/* Encabezado */}
         <div>
-          <Image
-            className="mx-auto h-12 w-auto"
-            src="/assets/logo.png" // Tu logo
-            alt="CastingFlow Logo"
-            width={48}
-            height={48}
-          />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-5 text-center text-3xl font-extrabold text-[#CD2C58]">
             Únete a CastingFlow
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -33,10 +26,8 @@ const RegisterPage = () => {
           </p>
         </div>
 
-        {/* Opciones de Registro */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* Opción 1: Soy Modelo */}
           <Link
             href="/register/model"
             className="group relative flex flex-col items-center justify-center p-10 bg-white rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
@@ -49,7 +40,7 @@ const RegisterPage = () => {
             <h3 className="mt-6 text-2xl font-bold text-gray-900">
               Soy Modelo
             </h3>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <p className="mt-2 text-center text-sm text-gray-600 w-[60%]">
               Quiero crear mi portafolio, buscar castings y postularme a trabajos.
             </p>
             <span className="mt-6 font-semibold text-[#CD2C58] group-hover:underline">
@@ -57,7 +48,6 @@ const RegisterPage = () => {
             </span>
           </Link>
 
-          {/* Opción 2: Soy Reclutador */}
           <Link
             href="/register/recruiter"
             className="group relative flex flex-col items-center justify-center p-10 bg-white rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
@@ -68,7 +58,7 @@ const RegisterPage = () => {
             <h3 className="mt-6 text-2xl font-bold text-gray-900">
               Soy Reclutador
             </h3>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <p className="mt-2 text-center text-sm text-gray-600 w-[70%]">
               Quiero publicar castings, buscar talento y gestionar mis postulantes.
             </p>
             <span className="mt-6 font-semibold text-[#CD2C58] group-hover:underline">
