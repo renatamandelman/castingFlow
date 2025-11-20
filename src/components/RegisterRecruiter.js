@@ -199,7 +199,7 @@ const RegisterRecruiter = () => {
                 <input
                   id="companyLogoUrl"
                   name="companyLogoUrl"
-                  type="url"
+                  type="text"
                   className="mt-1 appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#CD2C58] focus:border-[#CD2C58] sm:text-sm"
                   placeholder="https://ejemplo.com/logo.png"
                 />
