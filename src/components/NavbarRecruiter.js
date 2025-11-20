@@ -43,8 +43,8 @@ const NavbarRecruiter = () => {
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
     src={
-              casting?.recruiter?.companyLogoUrl
-                ? `/assets/recruiters/${casting.recruiter.companyLogoUrl}`
+              recruiter?.companyLogoUrl
+                ? `/assets/recruiters/${recruiter.companyLogoUrl}`
                 : "/assets/defaultCompany.png"
             }
     width={50}
