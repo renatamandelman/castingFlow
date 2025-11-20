@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`absolute w-full h-[70px]  px-4 flex items-center justify-between z-50`}
+      className={` w-full h-[70px]  px-4 flex items-center justify-between z-50`}
     >
 
       <Link href="/" className="flex items-center">

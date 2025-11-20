@@ -37,7 +37,9 @@ const PostulacionCard = ({ application }) => {
     <div className="bg-white p-6 m-3 flex flex-col md:flex-row items-start w-[80%] max-w-4xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
       <div className="shrink-0 mr-6 mb-4 md:mb-0">
         <Image
-          src={`/assets/recruiters/${application.casting.recruiter?.companyLogoUrl}`}
+          src={application?.casting?.recruiter?.companyLogoUrl
+  ? `/assets/recruiters/${application.casting.recruiter.companyLogoUrl}`
+  : "/assets/recruiters/default-logo.png"}
           alt={`${
             application.casting.recruiter?.companyName 
           } logo`}

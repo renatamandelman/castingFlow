@@ -42,7 +42,11 @@ const NavbarRecruiter = () => {
     <Link href="/" >
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
-    src={`/assets/recruiters/${recruiter.companyLogoUrl}`}
+    src={
+              casting?.recruiter?.companyLogoUrl
+                ? `/assets/recruiters/${casting.recruiter.companyLogoUrl}`
+                : "/assets/defaultCompany.png"
+            }
     width={50}
     height={50}
     alt="Foto de Perfil del Recruiter"
