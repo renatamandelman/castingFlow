@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { AppContextProvider } from "./contexts/AppContext";
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         {children}
         </AppContextProvider>
       </body>
+      <Footer/> 
  
     </html>
   );
