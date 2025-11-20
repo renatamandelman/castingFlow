@@ -56,14 +56,16 @@ closeModal();
       className='bg-white p-6 m-3 flex flex-col md:flex-row items-start w-[80%] max-w-4xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'
     >
       <div className='shrink-0 mr-6 mb-4 md:mb-0'>
-        <Image
-          src={ `/assets/recruiters/${casting.recruiter?.companyLogoUrl}`}
-          alt={`${casting.recruiter?.companyName || casting.title} logo`}
-          className="rounded-full object-contain border-2 border-gray-200"
-          width={64}
-          height={64}
-          style={{ height: "64px" }}
-        />
+       <Image
+  src={
+    casting?.recruiter?.companyLogoUrl
+      ? `/assets/recruiters/${casting.recruiter.companyLogoUrl}`
+      : "/assets/defaultCompany.png"
+  }
+  alt={casting?.recruiter?.companyName || "Logo"}
+  width={64}
+  height={64}
+/>
       </div>
 
       <div className='grow'> 
