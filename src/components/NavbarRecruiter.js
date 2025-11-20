@@ -44,8 +44,8 @@ const NavbarRecruiter = () => {
     className="rounded-full border-2 border-[#CD2C58] object-cover"
     src={
               recruiter?.companyLogoUrl
-                ? `/assets/recruiters/${recruiter.companyLogoUrl}`
-                : "/assets/defaultCompany.png"
+                ? `/assets/recruiters/${recruiter?.companyLogoUrl}`
+                : "/assets/logoCompany.png"
             }
     width={50}
     height={50}
