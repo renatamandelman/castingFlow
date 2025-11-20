@@ -25,17 +25,17 @@ const RegisterModel = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" flex items-center justify-center  px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         <div>
           <Image
-            className="mx-auto h-12 w-auto"
-            src="/assets/logoCompany.png"
+            className="mx-auto "
+            src="/assets/logo.png"
             alt="CastingFlow Logo"
-            width={48}
-            height={48}
+            width={120}
+            height={120}
           />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className=" text-center text-3xl font-extrabold text-gray-900">
             Crea tu cuenta de Modelo
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">

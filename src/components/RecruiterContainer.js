@@ -10,7 +10,7 @@ const RecruiterContainer = () => {
      <>
     <div className="flex justify-center items-center flex-col">
     <h1 className='font-bold text-2xl text-[#CD2C58]'>Modelos</h1>
-    <div className='grid grid-cols-4 gap-3  mt-10 justify-center items-start w-[90%]'>
+    <div className='grid grid-cols-4 gap-3  mt-5 justify-center items-start w-[90%]'>
         
             {models.map(model => (
                 <ModelCard model={model} key={model._id}/>

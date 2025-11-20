@@ -10,7 +10,7 @@ const CastingsGrid = () => {
     <>
     <div className="flex justify-center items-center flex-col">
       <h1 className='font-bold text-2xl text-[#CD2C58]'>Castings</h1>
-    <div className='flex flex-col mt-5 justify-center items-center'>
+    <div className='flex flex-col mt-2 justify-center items-center'>
         
             {castings.map(casting => (
                 <CastingCard casting={casting} key={casting._id}/>

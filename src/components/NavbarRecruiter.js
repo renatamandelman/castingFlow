@@ -10,7 +10,7 @@ const NavbarRecruiter = () => {
  const { recruiter } = useAppContext();
   return (
     <nav
-      className={`w-full h-[70px]  px-4 mt-1 flex items-center justify-between z-50`}
+      className={`w-full h-[70px]  px-4 flex items-center justify-between z-50`}
     >
 
       <Link href="/" className="flex items-center">
@@ -39,7 +39,7 @@ const NavbarRecruiter = () => {
          <Link href="/recruiter/postulaciones">Mis castings</Link>
         </li>
           <li className="flex flex-col md:flex-row items-start md:items-center w-full md:w-auto cursor-pointer">
-    <Link href="/" >
+    <Link href={`/recruiter/${recruiter?._id}`}>
   <Image
     className="rounded-full border-2 border-[#CD2C58] object-cover"
     src={

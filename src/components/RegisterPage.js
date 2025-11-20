@@ -3,9 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-
-
-// Icono de Reclutador (SVG)
 const RecruiterIcon = () => (
   <svg className="w-16 h-16 mx-auto text-[#CD2C58]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18M3 21h18" />
@@ -14,11 +11,10 @@ const RecruiterIcon = () => (
 
 const RegisterPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8">
-        {/* Encabezado */}
         <div>
-          <h2 className="mt-5 text-center text-3xl font-extrabold text-[#CD2C58]">
+          <h2 className=" text-center text-3xl font-extrabold text-[#CD2C58]">
             Únete a CastingFlow
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -67,7 +63,7 @@ const RegisterPage = () => {
           </Link>
         </div>
 
-        {/* Link de Login */}
+
         <p className="mt-10 text-center text-sm text-gray-600">
           ¿Ya tienes una cuenta?{' '}
           <Link href="/login" className="font-medium text-[#CD2C58] hover:text-[#B0264A]">

@@ -11,6 +11,7 @@ export const AppContextProvider = ({ children }) => {
   const [model, setModel] = useState(null);
   const [recruiter, setRecruiter] = useState(null);
   const [models, setModels] = useState([]);
+  const [recruiterApplications, setRecruiterApplications] = useState([]);
   const router = useRouter();
 
 
@@ -109,6 +110,19 @@ export const AppContextProvider = ({ children }) => {
     console.log(error);
   }
 });
+const getRecruiterApplications = useCallback(async (id) => {
+  try {
+    setLoading(true);
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/castings/recruiter/${id}`
+    );
+    setLoading(false);
+    setRecruiterApplications(response.data.castings);
+  }
+  catch (error) {
+    console.log(error);
+  }
+});
 const login = useCallback(async (email, password) => {
   
   try {
@@ -152,7 +166,11 @@ useEffect(() => {
   if (model?._id) {
     getModelApplication(model._id);
   }
-}, [getModelApplication, model]);
+  if(recruiter?._id) {
+    getRecruiterApplications(recruiter._id);
+  }
+
+}, [getModelApplication, model, getRecruiterApplications, recruiter]);
   return (
     <AppContext.Provider
       value={{
@@ -167,6 +185,7 @@ useEffect(() => {
         createRecruiter,
         createApplication,
         modelApplications,
+        recruiterApplications,
         getModelApplication,
         loading
       }}

@@ -25,17 +25,16 @@ const RegisterRecruiter = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center  px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg"> {/* Aumentado a max-w-4xl para más campos */}
         
-   
         <div>
           <Image
-            className="mx-auto h-12 w-auto"
+            className="mx-auto "
             src="/assets/logo.png" 
             alt="CastingFlow Logo"
-            width={48}
-            height={48}
+            width={120}
+            height={120}
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Registro de Reclutador
